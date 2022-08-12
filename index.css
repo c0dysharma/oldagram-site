@@ -6,14 +6,14 @@ html, body, h1, h2, h3, h4, p{
     sans-serif;
 }
 
-header, main{
+header, main, .divider{
     width: 400px;
     margin: 0 auto;
+    box-sizing: border-box;
 }
 
 main{
-    
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 /* default pads  */
@@ -34,6 +34,7 @@ header{
     justify-content: space-between;
     align-items: center;
     padding: 15px;
+    border-bottom: 1px solid #C6C6C6;
 }
 
 #oldagram-logo{
@@ -85,4 +86,10 @@ header{
 
 .commenter{
     font-weight: 700;
+}
+
+/* Divider Style  */
+.divider {
+    height: 25px;
+    background-color: #EDEDED;
 }
