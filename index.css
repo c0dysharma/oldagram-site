@@ -71,7 +71,7 @@ header{
     width: 20px;
     height: auto;
 }
-#post-btn-heart{
+.post-btn-comment{
     padding: 0 10px;
 }
 

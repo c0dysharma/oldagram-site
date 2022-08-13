@@ -1,7 +1,7 @@
 const posts = [
     {
         name: "Vincent van Gogh",
-        username: "vincey1853",
+        usernames: "vincey1853",
         location: "Zundert, Netherlands",
         avatar: "images/avatar-vangogh.jpg",
         post: "images/post-vangogh.jpg",
@@ -10,7 +10,7 @@ const posts = [
     },
     {
         name: "Gustave Courbet",
-        username: "gus1819",
+        usernames: "gus1819",
         location: "Ornans, France",
         avatar: "images/avatar-courbet.jpg",
         post: "images/post-courbet.jpg",
@@ -19,7 +19,7 @@ const posts = [
     },
     {
         name: "Joseph Ducreux",
-        username: "jd1735",
+        usernames: "jd1735",
         location: "Paris, France",
         avatar: "images/avatar-ducreux.jpg",
         post: "images/post-ducreux.jpg",
@@ -28,22 +28,42 @@ const posts = [
     }
 ]
 
-const userAvatar = document.getElementsByClassName("post-avatar");
-const userName = document.getElementsByClassName("user-info-name");
-const userLocation = document.getElementsByClassName("user-info-location");
-const userPostImg = document.getElementsByClassName("user-post-img");
-const likesCount = document.getElementsByClassName("likes-count");
-const commenterName = document.getElementsByClassName("commenter");
-const comment = document.getElementsByClassName("comment");
+const userAvatars = document.getElementsByClassName("post-avatar");
+const userNames = document.getElementsByClassName("user-info-name");
+const userLocations = document.getElementsByClassName("user-info-location");
+const userPostImgs = document.getElementsByClassName("user-post-img");
+const likesCounts = document.getElementsByClassName("likes-count");
+const commenterNames = document.getElementsByClassName("commenter");
+const comments = document.getElementsByClassName("comment");
 
 // Assuming length of all these class elements and posts are equal
-for(let i=0; i<posts.length; i++){
-    userAvatar[i].src = posts[i].avatar;
-    userName[i].textContent = posts[i].name;
-    userLocation[i].textContent = posts[i].location;
-    userPostImg[i].src = posts[i].post;
-    likesCount[i].textContent = `${posts[i].likes} likes`;
-    commenterName[i].textContent = posts[i].username;
-    comment[i].childNodes[2].textContent = " " + posts[i].comment;
+for (let i = 0; i < posts.length; i++) {
+    userAvatars[i].src = posts[i].avatar;
+    userNames[i].textContent = posts[i].name;
+    userLocations[i].textContent = posts[i].location;
+    userPostImgs[i].src = posts[i].post;
+    likesCounts[i].textContent = `${posts[i].likes} likes`;
+    commenterNames[i].textContent = posts[i].usernames;
+    comments[i].childNodes[2].textContent = " " + posts[i].comment;
 
+}
+
+// Increase likes count on heart btn and post dbclick
+const heartBtns = document.getElementsByClassName("post-btn-heart");
+const addClickListener = (i) => {
+    const heartBtn = heartBtns[i]
+    heartBtn.addEventListener('click', () => {
+        posts[i].likes += 1;
+        likesCounts[i].textContent = `${posts[i].likes} likes`;
+    })
+
+    // const currentUserPostImgs
+    const userPostImg = userPostImgs[i]
+    userPostImg.addEventListener('dblclick', () => {
+        posts[i].likes += 1;
+        likesCounts[i].textContent = `${posts[i].likes} likes`;1
+    })
+}
+for (let i = 0; i < heartBtns.length; i++) {
+    addClickListener(i)
 }
