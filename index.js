@@ -55,9 +55,9 @@ const addClickListener = (i) => {
     heartBtn.addEventListener('click', () => {
         posts[i].likes += 1;
         likesCounts[i].textContent = `${posts[i].likes} likes`;
+        heartBtn.src = 'images/icon-heart-filled.png';
     })
 
-    // const currentUserPostImgs
     const userPostImg = userPostImgs[i]
     userPostImg.addEventListener('dblclick', () => {
         posts[i].likes += 1;
